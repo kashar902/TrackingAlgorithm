@@ -2,7 +2,7 @@
 
 ## Overview
 
-This GitHub repository contains a collection of data tracking algorithms implemented in C# with a primary focus on the Depth-First Search (DFS) algorithm. These algorithms are designed to solve the business logic one of my freelance project, this is the version#01 and sample algorithm.
+✔️ This GitHub repository contains a collection of data tracking algorithms implemented in C# with a primary focus on the Depth-First Search (DFS) algorithm. These algorithms are designed to solve the business logic one of my freelance project, this is the version#01 and sample algorithm.
 
 ## Algorithms Included
 
