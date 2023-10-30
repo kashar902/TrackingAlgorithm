@@ -4,8 +4,7 @@ using TrackingAlgorithm.HackerRank;
 
 Console.WriteLine("Hello, World!");
 
-
-HackerRackSolution.miniMaxSum(new() { 942381765, 627450398, 954173620, 583762094, 236817490 });
+Console.WriteLine(HackerRank_Day02.kangaroo(0, 3, 2, 4));
 
 
 

@@ -1,6 +1,6 @@
 ﻿namespace TrackingAlgorithm.HackerRank;
 
-public class HackerRackSolution
+public class HackerRank_Day01
 {
     public static int simpleArraySum(List<int> ar)
     {
@@ -174,5 +174,141 @@ public class HackerRackSolution
             }
         }
         return count;
+    }
+}
+
+
+public class HackerRank_Day02
+{
+    public static List<int> gradingStudents(List<int> grades)
+    {
+        List<int> response = new();
+        foreach (int item in grades)
+        {
+            int checkVariable = 5 * (((item - 1) / 5) + 1);
+            if (item < 38)
+            {
+                response.Add(item);
+                Console.WriteLine(item);
+                continue;
+            }
+            if (checkVariable - item < 3)
+            {
+                response.Add(checkVariable);
+                Console.WriteLine(checkVariable);
+            } else
+            {
+                response.Add(item);
+            }
+        }
+        return response;
+    }
+
+    public static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges)
+    {
+        List<int> appleList = new(); int appleCount = 0;
+        foreach (int apple in apples)
+        {
+            appleList.Add(a + apple);
+        }
+        foreach (int item in appleList)
+        {
+            if (item >= s && item <= t)
+            {
+                appleCount++;
+            }
+        }
+        Console.WriteLine(appleCount);
+        List<int> oragneList = new(); int orangeCount = 0;
+        foreach (int oragne in oranges)
+        {
+            oragneList.Add(b + oragne);
+        }
+        foreach (int item in oragneList)
+        {
+            if (item >= s && item <= t)
+            {
+                orangeCount++;
+            }
+        }
+        Console.WriteLine(orangeCount);
+    }
+
+    public static string kangaroo(int x1, int v1, int x2, int v2)
+    {
+        return v1 == v2 ? x1 == x2 ? "YES" : "NO" : ((x1 - x2) % (v2 - v1) == 0) && ((x1 - x2) / (v2 - v1) >= 0) ? "YES" : "NO";
+    }
+
+    public static List<int> stringAnagram(List<string> dictionary, List<string> query)
+    {
+        List<int> result = new();
+
+        static Dictionary<char, int> CalculateFrequency(string word) // rank
+        {
+            Dictionary<char, int> frequency = new();
+            foreach (char c in word)
+            {
+                if (frequency.ContainsKey(c))
+                {
+                    frequency[c]++;
+                } else
+                {
+                    frequency[c] = 1;
+                }
+            }
+            return frequency;
+        }
+
+        Dictionary<string, int> wordFrequencies = new();
+        foreach (string word in dictionary)
+        {
+            Dictionary<char, int> frequency = CalculateFrequency(word);
+            string frequencyPattern = string.Join("", frequency.OrderBy(pair => pair.Key).Select(pair => $"{pair.Key}{pair.Value}"));
+
+            if (wordFrequencies.ContainsKey(frequencyPattern))
+            {
+                wordFrequencies[frequencyPattern]++;
+            } else
+            {
+                wordFrequencies[frequencyPattern] = 1;
+            }
+        }
+
+        foreach (string word in query)
+        {
+            Dictionary<char, int> frequency = CalculateFrequency(word);
+            string frequencyPattern = string.Join("", frequency.OrderBy(pair => pair.Key).Select(pair => $"{pair.Key}{pair.Value}"));
+
+            if (wordFrequencies.ContainsKey(frequencyPattern))
+            {
+                result.Add(wordFrequencies[frequencyPattern]);
+            } else
+            {
+                result.Add(0);
+            }
+        }
+
+        return result;
+    }
+
+    public static long getMinCost(List<int> crew_id, List<int> job_id)
+    {
+        int n = crew_id.Count;
+        if (n != job_id.Count)
+        {
+            throw new ArgumentException("Crew and job lists must have the same number of elements");
+        }
+
+        crew_id.Sort();
+        job_id.Sort();
+
+        long totalDistance = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            totalDistance += Math.Abs(crew_id[i] - job_id[i]);
+        }
+
+        return totalDistance;
     }
 }
